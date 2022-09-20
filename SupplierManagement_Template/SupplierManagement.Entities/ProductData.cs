@@ -8,8 +8,6 @@ namespace SupplierManagement.Entities
 {
     public class ProductData
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public int Price { get; set; }

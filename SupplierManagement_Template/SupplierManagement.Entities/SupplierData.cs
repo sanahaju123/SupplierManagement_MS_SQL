@@ -5,8 +5,6 @@ namespace SupplierManagement.Entities
 {
     public class SupplierData
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int SupplierID { get; set; }
         public string SupplierCompanyName { get; set; }
         public string ContactPerson{ get; set; }

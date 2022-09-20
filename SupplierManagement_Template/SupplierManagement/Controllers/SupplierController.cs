@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace SupplierManagement.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class SupplierController : ControllerBase
     {
@@ -35,25 +34,8 @@ namespace SupplierManagement.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> AddSupplier([FromBody] SupplierViewModel model)
         {
-            var supplierExists = await _supplierService.FindSupplierById(model.SupplierID);
-            if (supplierExists != null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Supplier already exists!" });
-            //New object and value for user
-            SupplierData supplierData = new SupplierData()
-            {
-                SupplierID=model.SupplierID,
-                SupplierCompanyName=model.SupplierCompanyName,
-                Address=model.Address,
-                ContactPerson=model.ContactPerson,
-                Email=model.Email,
-                PhoneNumber=model.PhoneNumber
-            };
-            var result = await _supplierService.AddSupplier(supplierData);
-            if (result == null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Supplier creation failed! Please check user details and try again." });
-
-            return Ok(new Response { Status = "Success", Message = "Supplier created successfully!" });
-
+            //Write Your Code Here
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -65,17 +47,8 @@ namespace SupplierManagement.Controllers
         [Route("Supplier/Update-Supplier")]
         public async Task<IActionResult> UpdateSupplier([FromBody] SupplierViewModel model)
         {
-            var supplier = await _supplierService.FindSupplierById(model.SupplierID);
-            if (supplier == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response
-                { Status = "Error", Message = $"Supplier With Id = {model.SupplierID} cannot be found" });
-            }
-            else
-            {
-                var result = await _supplierService.UpdateSupplier(model);
-                return Ok(new Response { Status = "Success", Message = "Supplier Edited successfully!" });
-            }
+            //Write Your Code Here
+            throw new NotImplementedException();
         }
 
 
@@ -88,17 +61,8 @@ namespace SupplierManagement.Controllers
         [Route("Supplier/Delete-Supplier/{SupplierId}")]
         public async Task<IActionResult> DeleteSupplier(int SupplierId)
         {
-            var supplier = await _supplierService.FindSupplierById(SupplierId);
-            if (supplier == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response
-                { Status = "Error", Message = $"Supplier With Id = {SupplierId} cannot be found" });
-            }
-            else
-            {
-                var result = await _supplierService.DeleteSupplierById(SupplierId);
-                return Ok(new Response { Status = "Success", Message = "Supplier deleted successfully!" });
-            }
+            //Write Your Code Here
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -110,16 +74,8 @@ namespace SupplierManagement.Controllers
         [Route("Supplier/Get-Supplier/{SupplierId}")]
         public async Task<IActionResult> GetSupplierById(int SupplierId)
         {
-            var supplier = await _supplierService.FindSupplierById(SupplierId);
-            if (supplier == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response
-                { Status = "Error", Message = $"Supplier With Id = {SupplierId} cannot be found" });
-            }
-            else
-            {
-                return Ok(supplier);
-            }
+            //Write Your Code Here
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -130,7 +86,8 @@ namespace SupplierManagement.Controllers
         [Route("Supplier/All-Suppliers")]
         public async Task<IEnumerable<SupplierData>> ListAllSuppliers()
         {
-            return await _supplierService.ListAllSupplier();
+            //Write Your Code Here
+            throw new NotImplementedException();
         }
         #endregion
 
@@ -147,24 +104,8 @@ namespace SupplierManagement.Controllers
         //[ValidateAntiForgeryToken]
         public async Task<IActionResult> AddProduct([FromBody] ProductViewModel model)
         {
-            var productExists = await _productService.FindProductById(model.ProductID);
-            if (productExists != null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Product already exists!" });
-            //New object and value for user
-            ProductData productData = new ProductData()
-            {
-                ProductID = model.ProductID,
-                ProductName = model.ProductName,
-                Price = model.Price,
-                Quantity = model.Quantity,
-                SupplierId = model.SupplierId,
-            };
-            var result = await _productService.AddProduct(productData);
-            if (result == null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Product creation failed! Please check product details and try again." });
-
-            return Ok(new Response { Status = "Success", Message = "Product created successfully!" });
-
+            //Write Your Code Here
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -174,19 +115,10 @@ namespace SupplierManagement.Controllers
         /// <returns></returns>
         [HttpPut]
         [Route("product/Update-product")]
-        public async Task<IActionResult> Updateproduct([FromBody] ProductViewModel model)
+        public async Task<IActionResult> UpdateProduct([FromBody] ProductViewModel model)
         {
-            var product = await _productService.FindProductById(model.ProductID);
-            if (product == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response
-                { Status = "Error", Message = $"Product With Id = {model.ProductID} cannot be found" });
-            }
-            else
-            {
-                var result = await _productService.UpdateProduct(model);
-                return Ok(new Response { Status = "Success", Message = "Product Edited successfully!" });
-            }
+            //Write Your Code Here
+            throw new NotImplementedException();
         }
 
 
@@ -197,19 +129,10 @@ namespace SupplierManagement.Controllers
         /// <returns></returns>
         [HttpDelete]
         [Route("Product/Delete-Product/{ProductId}")]
-        public async Task<IActionResult> DeletwProduct(int ProductId)
+        public async Task<IActionResult> DeleteProduct(int ProductId)
         {
-            var product = await _productService.FindProductById(ProductId);
-            if (product == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response
-                { Status = "Error", Message = $"Product With Id = {ProductId} cannot be found" });
-            }
-            else
-            {
-                var result = await _productService.DeleteProductById(ProductId);
-                return Ok(new Response { Status = "Success", Message = "Product deleted successfully!" });
-            }
+            //Write Your Code Here
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -221,16 +144,8 @@ namespace SupplierManagement.Controllers
         [Route("Product/Get-Product/{ProductId}")]
         public async Task<IActionResult> GetProductById(int ProductId)
         {
-            var product = await _productService.FindProductById(ProductId);
-            if (product == null)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response
-                { Status = "Error", Message = $"Product With Id = {ProductId} cannot be found" });
-            }
-            else
-            {
-                return Ok(product);
-            }
+            //Write Your Code Here
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -241,7 +156,8 @@ namespace SupplierManagement.Controllers
         [Route("Product/All-Products")]
         public async Task<IEnumerable<ProductData>> ListAllProducts()
         {
-            return await _productService.ListAllProducts();
+            //Write Your Code Here
+            throw new NotImplementedException();
         }
         #endregion
     }
