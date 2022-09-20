@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace SupplierManagement.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class SupplierController : ControllerBase
     {
